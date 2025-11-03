@@ -141,11 +141,11 @@ useEffect(() => {
 
 
 return (
-    <div>
-        <h2>Strudel Demo</h2>
+    <div className="page-container">
+        <h2 className="title">Strudel Demo</h2>
         <main>
 
-            <div className="container-fluid">
+            <div className="container-fluid"> 
                 <div className="row">
                     <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
                         <ProcTextArea Value={songText} onChange={(e) => setSongText(e.target.value)}/>
