@@ -79,6 +79,23 @@ export default function StrudelDemo() {
     }
 
     const [songText, setSongText] = useState(stranger_tune)
+
+
+    const handleProc = () => {
+        if (!globalEditor) return;
+        globalEditor.setCode(songText);
+        
+        
+    }
+
+     const handleProcAndPlay = () => {
+       if (!globalEditor) return;
+        globalEditor.setCode(songText);
+        setTimeout(() => {
+            globalEditor.evaluate();
+        }, 100);
+        
+    };
     
 
 useEffect(() => {
@@ -131,12 +148,12 @@ return (
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
-                        <ProcTextArea defaultValue={songText} onChange={(e) => setSongText(e.target.value)}/>
+                        <ProcTextArea Value={songText} onChange={(e) => setSongText(e.target.value)}/>
                     </div>
                     <div className="col-md-4">
 
                         <nav>
-                            <ProcButtons />
+                            <ProcButtons onProc={handleProc} onProcAndPlay={handleProcAndPlay}/>
                             <br />
                             <PlayButtons onPlay={handlePlay} onStop={handleStop}/>
                         </nav>
