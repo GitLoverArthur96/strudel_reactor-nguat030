@@ -115,13 +115,13 @@ return (
             <div className="container-fluid"> 
                 <div className="row">
                     
-                        <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+                        <div className="col-md-8" >
                             <div className="section-box">
                                 <h3 className="section-title">TESTT</h3>
                                 <ProcTextArea Value={songText} onChange={(e) => setSongText(e.target.value)}/>
                             </div>
                         </div>
-                        
+
                     <div className="col-md-4">
 
                         <div className="section-box">
@@ -134,7 +134,7 @@ return (
 
                 <div className="row">
                     
-                        <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+                        <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: '' }}>
                             <div className="section-box">
                                 <div id="editor" />
                                 <br />
