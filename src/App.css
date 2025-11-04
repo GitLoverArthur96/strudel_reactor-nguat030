@@ -54,3 +54,14 @@
   text-shadow: 0px 5px 30px #f6f6f6, 0px 0px 20px #cb8fe3;
   margin-bottom: 50px;
 }
+
+.section-box {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(203, 143, 227, 0.3);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
