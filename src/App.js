@@ -121,23 +121,31 @@ return (
                                 <ProcTextArea Value={songText} onChange={(e) => setSongText(e.target.value)}/>
                             </div>
                         </div>
+                        
                     <div className="col-md-4">
 
-                        <nav>
+                        <div className="section-box">
                             <ProcButtons onProc={handleProc} onProcAndPlay={handleProcAndPlay}/>
                             <br />
                             <PlayButtons onPlay={handlePlay} onStop={handleStop}/>
-                        </nav>
+                        </div>
                     </div>
                 </div>
 
                 <div className="row">
-                    <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
-                        <div id="editor" />
-                        <div id="output" />
-                    </div>
+                    
+                        <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+                            <div className="section-box">
+                                <div id="editor" />
+                                <br />
+                                <div id="output" />
+                            </div>
+                        </div>
+                   
                     <div className="col-md-4">
-                       <DJControls />
+                        <div className="section-box">
+                            <DJControls />
+                        </div>
                     </div>
                 </div>
             </div>
