@@ -1,11 +1,11 @@
-function DJControls({volume, onVolumeChange}) {
+function DJControls({volume, onVolumeChange, cpm, onCpmChange}) {
     return (
         <>
             <h5 className="section-title">DJ Controls</h5>
             <br />
             <div className="input-group flex-nowrap">
                 <span className="input-group-text" id="cpm_input_box">SetCPM</span>
-                <input type="text" className="form-control" placeholder="120" aria-label="cpm" aria-describedby="cpm_input_box" />
+                <input type="text" className="form-control" placeholder="120" value={cpm} onChange={onCpmChange} aria-label="cpm" aria-describedby="cpm_input_box" />
             </div>
 
             <br />
@@ -17,16 +17,16 @@ function DJControls({volume, onVolumeChange}) {
 
             <div className="form-check form-switch">
                 <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
-                <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Default switch checkbox input</label>
+                <label className="form-check-label" htmlFor="flexSwitchCheckDefault">S1</label>
             </div>
             <div className="form-check form-switch">
                 <input className="form-check-input" type="checkbox" id="flexSwitchCheckChecked"  />
-                <label className="form-check-label" htmlFor="flexSwitchCheckChecked">Checked switch checkbox input</label>
+                <label className="form-check-label" htmlFor="flexSwitchCheckChecked">D1</label>
             </div>
 
             <div className="form-check form-switch">
                 <input className="form-check-input" type="checkbox" id="flexSwitchCheckChecked"  />
-                <label className="form-check-label" htmlFor="flexSwitchCheckChecked">Checked switch checkbox input</label>
+                <label className="form-check-label" htmlFor="flexSwitchCheckChecked">C1</label>
             </div>
 
 

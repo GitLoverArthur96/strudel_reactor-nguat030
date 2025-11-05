@@ -11,7 +11,6 @@ import { stranger_tune } from './tunes';
 import console_monkey_patch, { getD3Data } from './console-monkey-patch';
 import DJControls from './Components/DJControls';
 import PlayButtons from './Components/PlayButtons';
-import ProcButtons from './Components/ProcButtons';
 import ProcTextArea from './Components/ProcTextArea';
 import Editor from './Components/Editor';
 import { Preprocess } from './Util/PreprocessLog';
@@ -29,7 +28,7 @@ export default function StrudelDemo() {
     const hasRun = useRef(false);
 
     const handlePlay = () => {
-        let outputText = Preprocess({ inputText: songText, volume: volume})
+        let outputText = Preprocess({ inputText: songText, volume: volume, cpm: cpm})
         globalEditor.setCode(outputText)
         globalEditor.evaluate()
     }
@@ -44,6 +43,8 @@ export default function StrudelDemo() {
 
     const [state, setState] = useState("stop");
 
+    const [cpm , setCpm] = useState(120);
+
     useEffect(() => {
         if (state == "play") {
             handlePlay();
@@ -52,25 +53,9 @@ export default function StrudelDemo() {
     }, [volume])
 
 
-    // const handleProc = () => {
-    //     if (!globalEditor) return;
-    //     globalEditor.setCode(songText);
-        
-        
-    // }
-
-    //  const handleProcAndPlay = () => {
-    //    if (!globalEditor) return;
-    //     globalEditor.setCode(songText);
-    //     setTimeout(() => {
-    //         globalEditor.evaluate();
-    //     }, 100);
-        
-    // };
 
 
-   
-    const [cpm , setCpm] = useState(120);
+
     
 
 useEffect(() => {
@@ -112,9 +97,7 @@ useEffect(() => {
 
       
         
-        // if (globalEditor.current) {
-        //     globalEditor.replace(cpm, ${cpm})
-        // }
+
     }
 
     globalEditor.setCode(songText);
@@ -140,9 +123,7 @@ return (
                     <div className="col-md-4">
 
                         <div className="section-box">
-                            {/* <ProcButtons onProc={handleProc} onProcAndPlay={handleProcAndPlay}/> */}
-                       
-                            {/* <PlayButtons onPlay={handlePlay} onStop={handleStop}/> */}
+                  
                              <PlayButtons onPlay={() => {setState("play"); handlePlay() }} onStop={() => {setState("stop"); handleStop()}}/>
                         </div>
                     </div>
@@ -156,7 +137,7 @@ return (
                    
                     <div className="col-md-4">
                         <div className="section-box">
-                            <DJControls volumeChange={volume} onVolumeChange={(e) => setVolume(e.target.value)}/>
+                            <DJControls volumeChange={volume} onVolumeChange={(e) => setVolume(e.target.value)} cpm={cpm} onCpmChange={(e) => setCpm(e.target.value)}/>
                         </div>
                     </div>
                 </div>
