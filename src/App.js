@@ -14,6 +14,8 @@ import PlayButtons from './Components/PlayButtons';
 import ProcTextArea from './Components/ProcTextArea';
 import Editor from './Components/Editor';
 import { Preprocess } from './Util/PreprocessLog';
+import JsonSave from './Components/JsonSave';
+
 
 let globalEditor = null;
 
@@ -114,16 +116,16 @@ return (
                 <div className="row">
                     
                         <div className="col-md-8" >
+                            <JsonSave />
                             <div className="section-box">
                                 
                                 <ProcTextArea Value={songText} onChange={(e) => setSongText(e.target.value)}/>
                             </div>
                         </div>
-
+                    
                     <div className="col-md-4">
-
+                    <br />
                         <div className="section-box">
-                  
                              <PlayButtons onPlay={() => {setState("play"); handlePlay() }} onStop={() => {setState("stop"); handleStop()}}/>
                         </div>
                     </div>
@@ -132,6 +134,7 @@ return (
                 <div className="row">
                  
                         <div className="col-md-8" >
+                            
                           <Editor />
                         </div>
                    

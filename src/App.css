@@ -71,3 +71,14 @@
   max-height: 400px;
   overflow-y: auto;
 }
+
+
+.btn-group {
+  width: 100%;
+  display: flex;
+}
+
+.btn-group .btn {
+  flex: 1;
+  text-align: center;
+}
