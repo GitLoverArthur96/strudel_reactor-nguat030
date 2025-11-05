@@ -68,6 +68,6 @@
 
 #editor {
   height: 300px; 
-  max-height: 350px;
+  max-height: 400px;
   overflow-y: auto;
 }

@@ -14,6 +14,7 @@ import PlayButtons from './Components/PlayButtons';
 import ProcButtons from './Components/ProcButtons';
 import ProcTextArea from './Components/ProcTextArea';
 import Editor from './Components/Editor';
+import { Preprocess } from './Util/PreprocessLog';
 
 let globalEditor = null;
 
@@ -28,6 +29,8 @@ export default function StrudelDemo() {
     const hasRun = useRef(false);
 
     const handlePlay = () => {
+        let outputText = Preprocess({ inputText: songText, volume: volume})
+        globalEditor.setCode(outputText)
         globalEditor.evaluate()
     }
 
@@ -37,22 +40,33 @@ export default function StrudelDemo() {
 
     const [songText, setSongText] = useState(stranger_tune)
 
+    const [volume, setVolume] = useState(1);
 
-    const handleProc = () => {
-        if (!globalEditor) return;
-        globalEditor.setCode(songText);
-        
-        
-    }
+    const [state, setState] = useState("stop");
 
-     const handleProcAndPlay = () => {
-       if (!globalEditor) return;
-        globalEditor.setCode(songText);
-        setTimeout(() => {
-            globalEditor.evaluate();
-        }, 100);
+    useEffect(() => {
+        if (state == "play") {
+            handlePlay();
+        }
+
+    }, [volume])
+
+
+    // const handleProc = () => {
+    //     if (!globalEditor) return;
+    //     globalEditor.setCode(songText);
         
-    };
+        
+    // }
+
+    //  const handleProcAndPlay = () => {
+    //    if (!globalEditor) return;
+    //     globalEditor.setCode(songText);
+    //     setTimeout(() => {
+    //         globalEditor.evaluate();
+    //     }, 100);
+        
+    // };
 
 
    
@@ -126,22 +140,23 @@ return (
                     <div className="col-md-4">
 
                         <div className="section-box">
-                            <ProcButtons onProc={handleProc} onProcAndPlay={handleProcAndPlay}/>
-                            <br />
-                            <PlayButtons onPlay={handlePlay} onStop={handleStop}/>
+                            {/* <ProcButtons onProc={handleProc} onProcAndPlay={handleProcAndPlay}/> */}
+                       
+                            {/* <PlayButtons onPlay={handlePlay} onStop={handleStop}/> */}
+                             <PlayButtons onPlay={() => {setState("play"); handlePlay() }} onStop={() => {setState("stop"); handleStop()}}/>
                         </div>
                     </div>
                 </div>
 
                 <div className="row">
                  
-                        <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: '' }}>
+                        <div className="col-md-8" >
                           <Editor />
                         </div>
                    
                     <div className="col-md-4">
                         <div className="section-box">
-                            <DJControls />
+                            <DJControls volumeChange={volume} onVolumeChange={(e) => setVolume(e.target.value)}/>
                         </div>
                     </div>
                 </div>

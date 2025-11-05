@@ -1,4 +1,4 @@
-function DJControls() {
+function DJControls({volume, onVolumeChange}) {
     return (
         <>
             <h5 className="section-title">DJ Controls</h5>
@@ -11,7 +11,7 @@ function DJControls() {
             <br />
 
             <label htmlFor="volume_range" className="form-label">Set Volume</label>
-            <input type="range" className="form-range" min="0" max="1" step="0.01" id="volume_range"></input>
+            <input type="range" className="form-range" min="0" max="1" step="0.01" id="volume_range" value={volume} onChange={onVolumeChange}></input>
 
             <br/>
 
