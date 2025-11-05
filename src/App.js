@@ -13,7 +13,7 @@ import DJControls from './Components/DJControls';
 import PlayButtons from './Components/PlayButtons';
 import ProcButtons from './Components/ProcButtons';
 import ProcTextArea from './Components/ProcTextArea';
-
+import Editor from './Components/Editor';
 
 let globalEditor = null;
 
@@ -109,6 +109,7 @@ useEffect(() => {
 
 return (
     <div className="page-container">
+        
         <h2 className="title">Strudel Demo</h2>
         <main>
 
@@ -117,7 +118,7 @@ return (
                     
                         <div className="col-md-8" >
                             <div className="section-box">
-                                <h3 className="section-title">TESTT</h3>
+                                
                                 <ProcTextArea Value={songText} onChange={(e) => setSongText(e.target.value)}/>
                             </div>
                         </div>
@@ -133,13 +134,9 @@ return (
                 </div>
 
                 <div className="row">
-                    
+                 
                         <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: '' }}>
-                            <div className="section-box">
-                                <div id="editor" />
-                                <br />
-                                <div id="output" />
-                            </div>
+                          <Editor />
                         </div>
                    
                     <div className="col-md-4">

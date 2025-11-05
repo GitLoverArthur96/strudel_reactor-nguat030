@@ -51,14 +51,14 @@
   font-weight: bold;
   text-align: center;
   color: #e5e1e6; 
-  text-shadow: 0px 5px 30px #f6f6f6, 0px 0px 20px #cb8fe3;
+  text-shadow: 0px 0px 0px #f6f6f6, 0px 0px 30px #cb8fe3;
   margin-bottom: 50px;
 }
 
 .section-box {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(203, 143, 227, 0.3);
+  border: 1px solid rgba(203, 172, 215, 0.3);
   border-radius: 15px;
   padding: 25px;
   margin-bottom: 20px;
@@ -71,5 +71,3 @@
   max-height: 350px;
   overflow-y: auto;
 }
-
-

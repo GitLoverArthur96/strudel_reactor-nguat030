@@ -1,7 +1,9 @@
 function ProcTextArea({ defaultValue, onChange}) {
     return (
         <>
-            <label htmlFor="exampleFormControlTextarea1" className="form-label">Text to preprocess:</label>
+           
+            <h5 className="section-title">Text Script</h5>
+            <br />
             <textarea className="form-control" rows="15" defaultValue={defaultValue} onChange={onChange} id="proc" ></textarea>
         </>
     );

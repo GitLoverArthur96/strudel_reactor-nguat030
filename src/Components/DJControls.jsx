@@ -1,6 +1,8 @@
 function DJControls() {
     return (
         <>
+            <h5 className="section-title">DJ Controls</h5>
+            <br />
             <div className="input-group flex-nowrap">
                 <span className="input-group-text" id="cpm_input_box">SetCPM</span>
                 <input type="text" className="form-control" placeholder="120" aria-label="cpm" aria-describedby="cpm_input_box" />
