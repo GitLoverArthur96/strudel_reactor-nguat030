@@ -3,7 +3,7 @@ function Editor() {
         <div>
 
             <div className="section-box">
-                <h5 className="section-title">Text Editor</h5>
+                <h4 className="section-title">Text Editor</h4>
                 <br />
                 <div id="editor" />
                 <br />

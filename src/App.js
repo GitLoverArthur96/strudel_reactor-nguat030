@@ -15,6 +15,7 @@ import ProcTextArea from './Components/ProcTextArea';
 import Editor from './Components/Editor';
 import { Preprocess } from './Util/PreprocessLog';
 import JsonSave from './Components/JsonSave';
+import Swal from "sweetalert2";
 
 
 let globalEditor = null;
@@ -47,6 +48,42 @@ export default function StrudelDemo() {
 
     const [cpm , setCpm] = useState(120);
 
+    const saveJson = () => {
+    const projectData = {
+        cpm,
+        volume,
+        globalEditor: songText,
+    };
+
+    const jsonString = JSON.stringify(projectData, null, 2);
+
+    localStorage.setItem("projectData", jsonString);
+
+    Swal.fire({
+        title: "Saved",
+        text: "preset saved",
+        icon: "success"
+    })
+
+    }
+
+
+    const loadJson = () => {
+        const jsonString = localStorage.getItem("projectData");
+        if (jsonString) {
+            const data = JSON.parse(jsonString);
+
+            if (data.cpm !== undefined) setCpm(data.cpm);
+            if (data.volume !== undefined) setVolume(Number(data.volume));
+            if (data.globalEditor !== undefined) setSongText(data.globalEditor);
+        
+        }
+        
+
+    }
+
+
+
     useEffect(() => {
         if (state == "play") {
             handlePlay();
@@ -54,6 +91,8 @@ export default function StrudelDemo() {
 
     }, [volume])
 
+
+    
 
 
 
@@ -116,7 +155,9 @@ return (
                 <div className="row">
                     
                         <div className="col-md-8" >
-                            <JsonSave />
+
+                            
+                           
                             <div className="section-box">
                                 
                                 <ProcTextArea Value={songText} onChange={(e) => setSongText(e.target.value)}/>
@@ -127,7 +168,13 @@ return (
                     <br />
                         <div className="section-box">
                              <PlayButtons onPlay={() => {setState("play"); handlePlay() }} onStop={() => {setState("stop"); handleStop()}}/>
+                                
+                           
                         </div>
+                         <div className="section-box">
+                              <JsonSave onSave={saveJson} onLoad={loadJson} />
+                        </div>
+                      
                     </div>
                 </div>
 

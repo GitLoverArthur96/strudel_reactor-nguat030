@@ -3,7 +3,7 @@ function ProcButtons({onProc, onProcAndPlay}) {
     return (
 
         <>
-            <h5 className="section-title">Music Buttons</h5>
+            <h4 className="section-title">Music Buttons</h4>
             <br />
             <div className="btn-group" role="group" aria-label="Basic mixed styles example">
                 <button id="process" className="btn btn-outline-primary" onClick={onProc}>Preprocess</button>
