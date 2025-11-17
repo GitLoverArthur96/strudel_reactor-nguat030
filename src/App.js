@@ -13,6 +13,7 @@ import DJControls from './Components/DJControls';
 import PlayButtons from './Components/PlayButtons';
 import ProcTextArea from './Components/ProcTextArea';
 import Editor from './Components/Editor';
+import Graph from './Components/Graph';
 import { Preprocess } from './Util/PreprocessLog';
 import JsonSave from './Components/JsonSave';
 import Swal from "sweetalert2";
@@ -163,6 +164,7 @@ return (
         
         <h2 className="title">Strudel Demo</h2>
         <main>
+            <Graph />
 
             <div className="container-fluid"> 
                 <div className="row">
