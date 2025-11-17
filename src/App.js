@@ -76,6 +76,18 @@ export default function StrudelDemo() {
             if (data.cpm !== undefined) setCpm(data.cpm);
             if (data.volume !== undefined) setVolume(Number(data.volume));
             if (data.globalEditor !== undefined) setSongText(data.globalEditor);
+
+            Swal.fire({
+                title: "Loaded",
+                text: "Preset loaded successfully",
+                icon: "success"
+            });
+        } else {
+            Swal.fire({
+                title: "No Data",
+                text: "No saved preset found",
+                icon: "warning"
+            });
         
         }
         
@@ -155,8 +167,6 @@ return (
                 <div className="row">
                     
                         <div className="col-md-8" >
-
-                            
                            
                             <div className="section-box">
                                 

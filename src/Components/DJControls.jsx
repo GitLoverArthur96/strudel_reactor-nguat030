@@ -5,7 +5,7 @@ function DJControls({volume, onVolumeChange, cpm, onCpmChange}) {
             <br />
             <div className="input-group flex-nowrap">
                 <span className="input-group-text" id="cpm_input_box">SetCPM</span>
-                <input type="text" className="form-control" placeholder="120" value={cpm} onChange={onCpmChange} aria-label="cpm" aria-describedby="cpm_input_box" />
+                <input type="number" className="form-control" placeholder="120" min={0} value={cpm} onChange={onCpmChange} aria-label="cpm" aria-describedby="cpm_input_box" />
             </div>
 
             <br />
