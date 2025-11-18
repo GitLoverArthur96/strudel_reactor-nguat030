@@ -273,7 +273,7 @@ export default function StrudelDemo() {
                             <div className="section-box">
                                 <JsonSave onSave={saveJson} onLoad={loadJson} />
                             </div>
-                            <h4>Volume / Cpm  Visualisation</h4>
+                            <h4>Instrument Visualisation</h4>
                             <canvas id="roll"></canvas>
                         </div>
                     </div>
