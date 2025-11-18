@@ -9,9 +9,11 @@ import { getAudioContext, webaudioOutput, registerSynthSounds } from '@strudel/w
 import { registerSoundfonts } from '@strudel/soundfonts';
 import { stranger_tune } from './tunes';
 import console_monkey_patch, { getD3Data } from './console-monkey-patch';
-import DJControls from './Components/DJControls';
 import PlayButtons from './Components/PlayButtons';
 import ProcTextArea from './Components/ProcTextArea';
+import SetCpm from './Components/SetCpm';
+import VolumeSlider from './Components/VolumeSlider';
+import HushButton from './Components/HushButton';
 import Editor from './Components/Editor';
 import Graph from './Components/Graph';
 import { Preprocess } from './Util/PreprocessLog';
@@ -200,7 +202,16 @@ return (
                    
                     <div className="col-md-4">
                         <div className="section-box">
-                            <DJControls volume={volume} onVolumeChange={(e) => setVolume(e.target.value)} cpm={cpm} onCpmChange={(e) => setCpm(e.target.value)}/>
+                            <h4 className="section-title">DJ Controls</h4>
+
+                            <SetCpm cpm={cpm} onCpmChange={(e) => setCpm(e.target.value)}/>
+                            <br />
+                            <VolumeSlider volume={volume} onVolumeChange={(e) => setVolume(e.target.value)}/>
+
+                            <HushButton />
+                        
+                         
+                            
                         </div>
                     </div>
                 </div>
