@@ -105,7 +105,7 @@ export default function StrudelDemo() {
             handlePlay();
         }
 
-    }, [volume])
+    }, [volume, cpm])
 
 
     
