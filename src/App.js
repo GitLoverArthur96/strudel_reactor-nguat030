@@ -130,6 +130,37 @@ useEffect(() => {
                 break;
 
 
+            case 'r': // R - Reset/Reload
+                loadJson();
+                break;
+
+            case 's': // S - Save
+                    saveJson();
+              
+                break;
+
+            case 'arrowup': // Volume Up
+                event.preventDefault();
+                setVolume(prev => Math.min(1, parseFloat(prev) + 0.1));
+                break;
+
+            case 'arrowdown': // Volume Down
+                event.preventDefault();
+                setVolume(prev => Math.max(0, parseFloat(prev) - 0.1));
+                break;
+
+            case 'arrowright': //  Increase CPM
+                event.preventDefault();
+                setCpm(prev => parseInt(prev) + 10);
+                break;
+
+            case 'arrowleft': //  Decrease CPM
+                event.preventDefault();
+                setCpm(prev => Math.max(0, parseInt(prev) - 10));
+                break;
+
+    
+
             default:
                 break;
         }
