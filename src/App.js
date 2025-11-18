@@ -272,6 +272,7 @@ return (
                               <JsonSave onSave={saveJson} onLoad={loadJson} />
                         </div>
                       
+                          <canvas id="roll"></canvas>
                     </div>
                 </div>
 
@@ -298,7 +299,7 @@ return (
                     </div>
                 </div>
             </div>
-            <canvas id="roll"></canvas>
+          
         </main >
     </div >
 );

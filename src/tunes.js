@@ -91,7 +91,8 @@ stack(
   .postgain(pick(gain_patterns, pattern))
   .hpf(1000)
   .speed(0.5)
-  .rarely(jux(rev)),
+  .rarely(jux(rev))
+  ,
 )
 //Remixed and reproduced from Algorave Dave's code found here: https://www.youtube.com/watch?v=ZCcpWzhekEY
 all(x => x.gain({$VOLUME}))
