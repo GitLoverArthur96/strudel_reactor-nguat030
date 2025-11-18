@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+# Strudel Demo - music coder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A web-based music app built with React and Strudel.js to create and play sounds using controls and buttons
 
-## Available Scripts
 
-In the project directory, you can run:
+### D3 Graph
 
-### `npm start`
+Gain Visualisation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Graph showing gain levels as well as cpm
+Color gradient from green to red
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Controls
 
-### `npm run build`
+# Stop and Play
+Play Button: Starts/resumes playback of the current song
+Stop Button: Stops all audio playback
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Save and Load
+Save Json: Saves your current settings (CPM, volume) to browser localStorage
+Load Json: Loads previously saved settings from localStorage
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Shows a warning if no saved data exists
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Roll Canva
+Shows the instruments as a roll for the user to see
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Text Area/ Editor
+Text Area: Edit your Strudel code here
+Changes are shown in the Text Editor below
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Text Editor (Mirrors Code): Interactive code editor with syntax highlighting
+Shows the processed/compiled version of your code
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Hotkeys are disabled when typing here
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### DJ Controls 
 
-### Code Splitting
+# Set Cpm
+SetCPM: Control the tempo of the song (Cycles Per Minute)
+Default: 120
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Volume Slider
+Slider to control volume
 
-### Analyzing the Bundle Size
+From 0% to 100%
+Shows current percentage
+Default: 100%
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+# Hot Keys
+Keyboard Shortcuts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Spacebar: Play/Pause toggle
+R: Reload saved preset
+S: Save preset
+↑ / ↓: Increase/decrease volume by 10%
+← / →: Decrease/increase CPM by 10
+?: Show keyboard shortcuts help
 
-### Advanced Configuration
+Note: Hotkeys are disabled when typing in text inputs or the code editor.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+### Link to Video Demo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+### Getting Started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Open Terminal in View
+Run "npm install" to install dependencies
+Run "npm start" to start the development server
+
+
+### Song Code Sources
+Original Author: Algorave Dave
+Source: https://www.youtube.com/watch?v=ZCcpWzhekEY
+
+
+
+AI Tools Used: ChatGPT
+
+Whats the syntax to use sweetalert ?
+
+Swal.fire({
+  title: "Your Title",
+  text: "Your message here",
+  icon: "success",  // success, error, warning, info, question
+  showCancelButton: true,
+  confirmButtonText: "OK",
+  cancelButtonText: "Cancel"
+});
+
+and more similar templates

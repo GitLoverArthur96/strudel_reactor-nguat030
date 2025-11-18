@@ -101,7 +101,7 @@ export default function D3Graph() {
 
     return (
         <div className="section-box">
-            <h4 className="section-title">Gain Visualisation</h4>
+            <h4 className="section-title">Cpm Visualisation</h4>
             <svg
                 id="gain-svg"
                 width="100%"
