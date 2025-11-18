@@ -13,7 +13,6 @@ import PlayButtons from './Components/PlayButtons';
 import ProcTextArea from './Components/ProcTextArea';
 import SetCpm from './Components/SetCpm';
 import VolumeSlider from './Components/VolumeSlider';
-import HushButton from './Components/HushButton';
 import Editor from './Components/Editor';
 import Graph from './Components/Graph';
 import { Preprocess } from './Util/PreprocessLog';
@@ -159,6 +158,22 @@ useEffect(() => {
                 setCpm(prev => Math.max(0, parseInt(prev) - 10));
                 break;
 
+            case '?': // help info for hotkeys
+                Swal.fire({
+                    title: 'Keyboard Shortcuts',
+                    html: `
+                        <div style="text-align: left;">
+                            <strong>Spacebar</strong> - Play/Pause<br/>               
+                            <strong>R</strong> - Reload saved preset<br/>
+                            <strong>S</strong> - Save preset<br/>
+                            <strong>↑/↓</strong> - Volume Up/Down<br/>
+                            <strong>←/→</strong> - CPM Down/Up<br/>
+                            <strong>?</strong> - Show this help
+                        </div>
+                    `,
+                    icon: 'info'
+                });
+                break;
     
 
             default:
@@ -274,7 +289,7 @@ return (
                             <br />
                             <VolumeSlider volume={volume} onVolumeChange={(e) => setVolume(e.target.value)}/>
 
-                            <HushButton />
+                            
                         
                          
                             
