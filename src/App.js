@@ -108,6 +108,41 @@ export default function StrudelDemo() {
     }, [volume, cpm])
 
 
+useEffect(() => {
+    const handleKeyPress = (event) => {
+        // Ignore if user is typing in an input or text
+        const isTyping = ['INPUT', 'TEXTAREA'].includes(event.target.tagName);
+        if (isTyping) return;
+
+        // Check for letters
+        const key = event.key.toLowerCase();
+
+        switch(key) {
+            case ' ': // Spacebar - Play/Pause
+                event.preventDefault(); // Prevent page scroll
+                if (state === "play") {
+                    setState("stop");
+                    handleStop();
+                } else {
+                    setState("play");
+                    handlePlay();
+                }
+                break;
+
+
+            default:
+                break;
+        }
+    };
+
+    // Add event listener
+    window.addEventListener('keydown', handleKeyPress);
+
+    // Cleanup
+    return () => {
+        window.removeEventListener('keydown', handleKeyPress);
+    };
+}, [state, handlePlay, handleStop, saveJson, loadJson]);
     
 
 
