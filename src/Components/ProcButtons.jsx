@@ -1,4 +1,4 @@
-function ProcButtons({onProc, onProcAndPlay}) {
+function ProcButtons({ onProc, onProcAndPlay }) {
 
     return (
 

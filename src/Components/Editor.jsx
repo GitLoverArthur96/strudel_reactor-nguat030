@@ -9,12 +9,12 @@ function Editor() {
                 <br />
                 <div id="output" />
             </div>
-            
+
 
         </div>
 
     );
-        
+
 
 }
 

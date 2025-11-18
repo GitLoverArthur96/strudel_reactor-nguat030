@@ -32,6 +32,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -39,8 +40,8 @@
 
 
 .page-container {
-  background-color: #1B003A;  
-  color: #FFFFFF;             
+  background-color: #1B003A;
+  color: #FFFFFF;
   padding: 20px;
   border-radius: 10px;
 }
@@ -50,7 +51,7 @@
   font-size: 3rem;
   font-weight: bold;
   text-align: center;
-  color: #e5e1e6; 
+  color: #e5e1e6;
   text-shadow: 0px 0px 0px #f6f6f6, 0px 0px 30px #cb8fe3;
   margin-bottom: 50px;
 }
@@ -67,7 +68,7 @@
 }
 
 #editor {
-  height: 300px; 
+  height: 300px;
   max-height: 400px;
   overflow-y: auto;
 }
@@ -84,10 +85,10 @@
 }
 
 #roll {
-    width: 100%;
-    height: 200px;
-    display: block;
-    margin: 20px auto;
-    background: rgba(0,0,0,0.3);
-    border-radius: 10px;
+  width: 100%;
+  height: 200px;
+  display: block;
+  margin: 20px auto;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
 }

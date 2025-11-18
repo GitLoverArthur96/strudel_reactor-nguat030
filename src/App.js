@@ -34,7 +34,7 @@ export default function StrudelDemo() {
     const hasRun = useRef(false);
 
     const handlePlay = () => {
-        let outputText = Preprocess({ inputText: songText, volume: volume, cpm: cpm})
+        let outputText = Preprocess({ inputText: songText, volume: volume, cpm: cpm })
         globalEditor.setCode(outputText)
         globalEditor.evaluate()
     }
@@ -49,24 +49,24 @@ export default function StrudelDemo() {
 
     const [state, setState] = useState("stop");
 
-    const [cpm , setCpm] = useState(120);
+    const [cpm, setCpm] = useState(120);
 
     const saveJson = () => {
-    const projectData = {
-        cpm,
-        volume,
-        globalEditor: songText,
-    };
+        const projectData = {
+            cpm,
+            volume,
+            globalEditor: songText,
+        };
 
-    const jsonString = JSON.stringify(projectData, null, 2);
+        const jsonString = JSON.stringify(projectData, null, 2);
 
-    localStorage.setItem("projectData", jsonString);
+        localStorage.setItem("projectData", jsonString);
 
-    Swal.fire({
-        title: "Saved",
-        text: "preset saved",
-        icon: "success"
-    })
+        Swal.fire({
+            title: "Saved",
+            text: "preset saved",
+            icon: "success"
+        })
 
     }
 
@@ -79,7 +79,7 @@ export default function StrudelDemo() {
             if (data.cpm !== undefined) setCpm(data.cpm);
             if (data.volume !== undefined) setVolume(Number(data.volume));
             if (data.globalEditor !== undefined) setSongText(data.globalEditor);
-            
+
 
             Swal.fire({
                 title: "Loaded",
@@ -92,9 +92,9 @@ export default function StrudelDemo() {
                 text: "No saved preset found",
                 icon: "warning"
             });
-        
+
         }
-        
+
 
     }
 
@@ -108,61 +108,63 @@ export default function StrudelDemo() {
     }, [volume, cpm])
 
 
-useEffect(() => {
-    const handleKeyPress = (event) => {
-        // Ignore if user is typing in an input or text
-        const isTyping = ['INPUT', 'TEXTAREA'].includes(event.target.tagName);
-        if (isTyping) return;
+    useEffect(() => {
+        const handleKeyPress = (event) => {
+            // Ignore if user is typing in an input or text as well as editor
+            const isTyping = ['INPUT', 'TEXTAREA'].includes(event.target.tagName) ||
+                event.target.closest('.cm-editor') !== null ||
+                event.target.closest('#editor') !== null;;
+            if (isTyping) return;
 
-        // Check for letters
-        const key = event.key.toLowerCase();
+            // Check for letters
+            const key = event.key.toLowerCase();
 
-        switch(key) {
-            case ' ': // Spacebar - Play/Pause
-                event.preventDefault(); // Prevent page scroll
-                if (state === "play") {
-                    setState("stop");
-                    handleStop();
-                } else {
-                    setState("play");
-                    handlePlay();
-                }
-                break;
+            switch (key) {
+                case ' ': // Spacebar - Play/Pause
+                    event.preventDefault(); // Prevent page scroll
+                    if (state === "play") {
+                        setState("stop");
+                        handleStop();
+                    } else {
+                        setState("play");
+                        handlePlay();
+                    }
+                    break;
 
 
-            case 'r': // R - Reset/Reload
-                loadJson();
-                break;
+                case 'r': // R - Reset/Reload
+                    loadJson();
+                    break;
 
-            case 's': // S - Save
+                case 's': // S - Save
                     saveJson();
-              
-                break;
 
-            case 'arrowup': // Volume Up
-                event.preventDefault();
-                setVolume(prev => Math.min(1, parseFloat(prev) + 0.1));
-                break;
+                    break;
 
-            case 'arrowdown': // Volume Down
-                event.preventDefault();
-                setVolume(prev => Math.max(0, parseFloat(prev) - 0.1));
-                break;
+                case 'arrowup': // Volume Up
+                    event.preventDefault();
+                    setVolume(prev => Math.min(1, parseFloat(prev) + 0.1));
+                    break;
 
-            case 'arrowright': //  Increase CPM
-                event.preventDefault();
-                setCpm(prev => parseInt(prev) + 10);
-                break;
+                case 'arrowdown': // Volume Down
+                    event.preventDefault();
+                    setVolume(prev => Math.max(0, parseFloat(prev) - 0.1));
+                    break;
 
-            case 'arrowleft': //  Decrease CPM
-                event.preventDefault();
-                setCpm(prev => Math.max(0, parseInt(prev) - 10));
-                break;
+                case 'arrowright': //  Increase CPM
+                    event.preventDefault();
+                    setCpm(prev => parseInt(prev) + 10);
+                    break;
 
-            case '?': // help info for hotkeys
-                Swal.fire({
-                    title: 'Keyboard Shortcuts',
-                    html: `
+                case 'arrowleft': //  Decrease CPM
+                    event.preventDefault();
+                    setCpm(prev => Math.max(0, parseInt(prev) - 10));
+                    break;
+
+                case '?': // help info for hotkeys
+                    Swal.fire({
+                        title: 'Keyboard Shortcuts',
+                        html: `
                         <div style="text-align: left;">
                             <strong>Spacebar</strong> - Play/Pause<br/>               
                             <strong>R</strong> - Reload saved preset<br/>
@@ -172,38 +174,38 @@ useEffect(() => {
                             <strong>?</strong> - Show this help
                         </div>
                     `,
-                    icon: 'info'
-                });
-                break;
-    
+                        icon: 'info'
+                    });
+                    break;
 
-            default:
-                break;
-        }
-    };
 
-    // Add event listener
-    window.addEventListener('keydown', handleKeyPress);
+                default:
+                    break;
+            }
+        };
 
-    // Cleanup
-    return () => {
-        window.removeEventListener('keydown', handleKeyPress);
-    };
-}, [state, handlePlay, handleStop, saveJson, loadJson]);
-    
+        // Add event listener
+        window.addEventListener('keydown', handleKeyPress);
 
+        // Cleanup
+        return () => {
+            window.removeEventListener('keydown', handleKeyPress);
+        };
+    }, [state, handlePlay, handleStop, saveJson, loadJson]);
 
 
 
-    
 
-useEffect(() => {
 
-    if (!hasRun.current) {
-        document.addEventListener("d3Data", handleD3Data);
-        console_monkey_patch();
-        hasRun.current = true;
-        //Code copied from example: https://codeberg.org/uzu/strudel/src/branch/main/examples/codemirror-repl
+
+
+    useEffect(() => {
+
+        if (!hasRun.current) {
+            document.addEventListener("d3Data", handleD3Data);
+            console_monkey_patch();
+            hasRun.current = true;
+            //Code copied from example: https://codeberg.org/uzu/strudel/src/branch/main/examples/codemirror-repl
             //init canvas
             const canvas = document.getElementById('roll');
             canvas.width = canvas.width * 2;
@@ -229,80 +231,78 @@ useEffect(() => {
                     await Promise.all([loadModules, registerSynthSounds(), registerSoundfonts()]);
                 },
             });
-            
-        document.getElementById('proc').value = stranger_tune
-       
+
+            document.getElementById('proc').value = stranger_tune
 
 
-      
-        
-
-    }
-
-    globalEditor.setCode(songText);
-}, [songText]);
 
 
-return (
-    <div className="page-container">
-        
-        <h2 className="title">Strudel Demo</h2>
-        <main>
-            <Graph />
 
-            <div className="container-fluid"> 
-                <div className="row">
-                    
+
+        }
+
+        globalEditor.setCode(songText);
+    }, [songText]);
+
+
+    return (
+        <div className="page-container">
+
+            <h2 className="title">Strudel Demo</h2>
+            <main>
+                <Graph />
+
+                <div className="container-fluid">
+                    <div className="row">
+
                         <div className="col-md-8" >
-                           
+
                             <div className="section-box">
-                                
-                                <ProcTextArea Value={songText} onChange={(e) => setSongText(e.target.value)}/>
+
+                                <ProcTextArea Value={songText} onChange={(e) => setSongText(e.target.value)} />
                             </div>
                         </div>
-                    
-                    <div className="col-md-4">
-                    <br />
-                        <div className="section-box">
-                             <PlayButtons onPlay={() => {setState("play"); handlePlay() }} onStop={() => {setState("stop"); handleStop()}}/>
-                                
-                           
-                        </div>
-                         <div className="section-box">
-                              <JsonSave onSave={saveJson} onLoad={loadJson} />
-                        </div>
-                      
-                          <canvas id="roll"></canvas>
-                    </div>
-                </div>
 
-                <div className="row">
-                 
+                        <div className="col-md-4">
+                            <br />
+                            <div className="section-box">
+                                <PlayButtons onPlay={() => { setState("play"); handlePlay() }} onStop={() => { setState("stop"); handleStop() }} />
+
+
+                            </div>
+                            <div className="section-box">
+                                <JsonSave onSave={saveJson} onLoad={loadJson} />
+                            </div>
+
+                            <canvas id="roll"></canvas>
+                        </div>
+                    </div>
+
+                    <div className="row">
+
                         <div className="col-md-8" >
-                            
-                          <Editor />
-                        </div>
-                   
-                    <div className="col-md-4">
-                        <div className="section-box">
-                            <h4 className="section-title">DJ Controls</h4>
 
-                            <SetCpm cpm={cpm} onCpmChange={(e) => setCpm(e.target.value)}/>
-                            <br />
-                            <VolumeSlider volume={volume} onVolumeChange={(e) => setVolume(e.target.value)}/>
-                            <br />
-                            <Hotkeys />
-                        
-                         
-                            
+                            <Editor />
+                        </div>
+
+                        <div className="col-md-4">
+                            <div className="section-box">
+                                <h4 className="section-title">DJ Controls</h4>
+
+                                <SetCpm cpm={cpm} onCpmChange={(e) => setCpm(e.target.value)} />
+                                <br />
+                                <VolumeSlider volume={volume} onVolumeChange={(e) => setVolume(e.target.value)} />
+                                <br />
+                                <Hotkeys />
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-          
-        </main >
-    </div >
-);
+
+            </main >
+        </div >
+    );
 
 
 }

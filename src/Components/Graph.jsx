@@ -56,9 +56,9 @@ export default function D3Graph() {
         const chartGroup = svg.append('g')
             .attr('transform', 'translate(30,3)');
 
-      
+
         // Convert Line from green to red
-       
+
         const defs = svg.append("defs");
 
         const gradient = defs.append("linearGradient")
@@ -76,9 +76,9 @@ export default function D3Graph() {
             .attr("offset", "100%")
             .attr("stop-color", "red");
 
-  
+
         // Draw line
-      
+
         if (rngArray.length > 0) {
             chartGroup.append('path')
                 .datum(rngArray)
@@ -91,9 +91,9 @@ export default function D3Graph() {
                 );
         }
 
-       
+
         // Y-Axis
-      
+
         const yAxis = d3.axisLeft(yScale);
         chartGroup.append('g').call(yAxis);
 
