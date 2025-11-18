@@ -68,7 +68,7 @@ Note: Hotkeys are disabled when typing in text inputs or the code editor.
 
 
 ### Link to Video Demo
-https://www.youtube.com/watch?v=GzsLZijAFAw
+https://www.youtube.com/watch?v=cxR54p5Hm7k
 
 
 ### Getting Started
