@@ -13,6 +13,7 @@ import PlayButtons from './Components/PlayButtons';
 import ProcTextArea from './Components/ProcTextArea';
 import SetCpm from './Components/SetCpm';
 import VolumeSlider from './Components/VolumeSlider';
+import Hotkeys from './Components/HotKeys';
 import Editor from './Components/Editor';
 import Graph from './Components/Graph';
 import { Preprocess } from './Util/PreprocessLog';
@@ -288,8 +289,8 @@ return (
                             <SetCpm cpm={cpm} onCpmChange={(e) => setCpm(e.target.value)}/>
                             <br />
                             <VolumeSlider volume={volume} onVolumeChange={(e) => setVolume(e.target.value)}/>
-
-                            
+                            <br />
+                            <Hotkeys />
                         
                          
                             
